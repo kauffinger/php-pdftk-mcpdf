@@ -188,7 +188,11 @@ class Command extends BaseCommand
     {
         $passwords = array();
         foreach ($this->_files as $handle => $file) {
-            $this->addArg($handle . '=', $file['name']);
+            if ($this->_command === 'mcpdf') {
+                $this->addArg($file['name']);
+            } else {
+                $this->addArg($handle . '=', $file['name']);
+            }
             if ($file['password'] !== null) {
                 $passwords[$handle] = $file['password'];
             }
@@ -210,7 +214,11 @@ class Command extends BaseCommand
     {
         // output must be first option after operation
         if ($filename !== null) {
-            $this->addArg('output', $filename, true);
+            if ($this->_command === 'mcpdf') {
+                $this->addArg(' > ', $filename, false);
+            } else {
+                $this->addArg('output', $filename, true);
+            }
         }
         foreach ($this->_options as $option) {
             if (is_array($option)) {
@@ -231,7 +239,24 @@ class Command extends BaseCommand
             if ($value instanceof TmpFile) {
                 $value = (string) $value;
             }
-            $this->addArg($this->_operation, $value, $this->_escapeOperationArgument);
+            if ($this->_command === 'mcpdf') {
+                $operationWithOptions = $this->_operation . ' - output';
+
+                foreach ($this->_options as $option) {
+                    if (is_array($option)) {
+                        // do need these options yet
+                        //$this->addArg($option[0], $option[1], $option[2]);
+                    } elseif ($option !== 'drop_xfa') {
+                        // drop_xfa causes Unknown operation in mcdpf.jar
+                        $operationWithOptions .= ' - ' . $option;
+                    }
+                }
+                $operationWithOptions .= ' < ';
+    
+                $this->addArg($operationWithOptions, $value, $this->_escapeOperationArgument);
+            } else {
+                $this->addArg($this->_operation, $value, $this->_escapeOperationArgument);
+            }
         }
     }
 
