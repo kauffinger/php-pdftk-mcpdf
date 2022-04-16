@@ -86,7 +86,7 @@ class DataFields extends ArrayObject
                 '/^---(\r\n|\n|\r)(?=FieldType:)/m',
                 substr($input, 3)
             );
-            return array_map('\mikehaertl\pdftk\DataFields::parseBlock', $blocks);
+            return array_map('\kauffinger\pdftkmcpdf\DataFields::parseBlock', $blocks);
         } else {
             return self::parseBlock($input);
         }
