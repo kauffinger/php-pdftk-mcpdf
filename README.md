@@ -1,4 +1,4 @@
-php-pdftk
+php-pdftk-mcpdf
 =========
 
 [![GitHub Tests](https://github.com/mikehaertl/php-pdftk/workflows/Tests/badge.svg)](https://github.com/mikehaertl/php-pdftk/actions)
@@ -15,7 +15,7 @@ NOTE: This implementation depends upon you having symlinked "mcpdf" to execute m
 
 ## Features
 
-*php-pdftk* brings the full power of `pdftk` to PHP - and more.
+*php-pdftk-mcpd* brings the full power of `pdftk` and `mcpdf` to PHP - and more.
 
  * Fill forms, either from a XFDF/FDF file or from a data array (UTF-8 safe for unflattened forms, requires pdftk 2.x !)
  * Create XFDF or FDF files from PHP arrays (UTF-8 safe!)
@@ -30,12 +30,13 @@ NOTE: This implementation depends upon you having symlinked "mcpdf" to execute m
 ## Requirements
 
  * The `pdftk` command must be installed and working on your system
+ * The `mcpdf` command must be installed and working on your system if you want to write UTF-8 chars
  * This library is written for pdftk 2.x versions. You should be able to use it with pdftk 1.x but not all methods will work there.
    For details consult the man page of pdftk on your system.
  * There is a [known issue](https://github.com/mikehaertl/php-pdftk/issues/150)
    on Ubuntu if you installed the `pdftk` package from snap. This version has
    no permission to write to the `/tmp` directory. You can either set another
-   temporay directory as described below or use another package.  For Ubuntu
+   temporary directory as described below or use another package.  For Ubuntu
    18.10 there's also a `pdftk-java` package available via apt which should work
    fine. You can also install this package on Ubuntu 18.04 if you download it
    manually. Also check [this answer](https://askubuntu.com/a/1028983/175814)
@@ -47,11 +48,7 @@ NOTE: This implementation depends upon you having symlinked "mcpdf" to execute m
 
 ## Installation
 
-You should use [composer](https://getcomposer.org/) to install this library.
-
-```
-composer require mikehaertl/php-pdftk
-```
+This is meant as a drop-in replacement for your local `php-pdftk` installation. There is no composer package yet.
 
 ## Examples
 
@@ -101,12 +98,15 @@ Below you can find a workaround if you need multiple operations.**
 #### Fill Form
 
 Fill a PDF form with data from a PHP array or an XFDF/FDF file.
+Note how the Pdf instance is created using the options array.
 
 ```php
 use mikehaertl\pdftk\Pdf;
 
 // Fill form with data array
-$pdf = new Pdf('/full/path/to/form.pdf');
+$pdf = new Pdf('/full/path/to/form.pdf', [
+            'command' => 'mcpdf'
+        ]);
 $result = $pdf->fillForm([
         'name'=>'ÄÜÖ äüö мирано čárka',
         'nested.name' => 'valX',
