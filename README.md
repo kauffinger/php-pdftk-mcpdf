@@ -7,7 +7,11 @@ php-pdftk
 [![GitHub license](https://img.shields.io/github/license/mikehaertl/php-pdftk)](https://github.com/mikehaertl/php-pdftk/blob/master/LICENSE)
 [![Packagist PHP Version Support](https://img.shields.io/packagist/php-v/mikehaertl/php-pdftk)](https://packagist.org/packages/mikehaertl/php-pdftk)
 
-A PDF conversion and form utility based on pdftk.
+A PDF conversion and form utility based on pdftk AND mcpdf.
+
+This is a crude integration of mcpdf as an extra layer - use php-pdftk custom commands to use mcpdf.
+This is specifically meant to be used when filling forms with UTF-8 characters.
+NOTE: This implementation depends upon you having symlinked "mcpdf" to execute mcpdf.
 
 ## Features
 
