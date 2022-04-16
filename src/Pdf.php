@@ -297,7 +297,7 @@ class Pdf
     {
         $this->constrainSingleFile();
         if (is_array($data)) {
-            $className = '\mikehaertl\pdftk\\' . ($format === 'xfdf' ? 'XfdfFile' : 'FdfFile');
+            $className = '\kauffinger\pdftkmcpdf\\' . ($format === 'xfdf' ? 'XfdfFile' : 'FdfFile');
             $data = new $className($data, null, null, $this->tempDir, $encoding);
         }
         $this->getCommand()
