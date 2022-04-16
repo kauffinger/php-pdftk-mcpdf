@@ -1,5 +1,6 @@
 <?php
-namespace mikehaertl\pdftk;
+namespace kauffinger\pdftkmcpdf;
+
 
 use mikehaertl\tmp\File;
 

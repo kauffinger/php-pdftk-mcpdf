@@ -2,7 +2,7 @@
 namespace tests;
 
 use PHPUnit\Framework\TestCase;
-use mikehaertl\pdftk\InfoFields;
+use kauffinger\pdftkmcpdf\InfoFields;
 
 class InfoFieldsTest extends TestCase
 {

@@ -2,8 +2,7 @@
 namespace tests;
 
 use PHPUnit\Framework\TestCase;
-use mikehaertl\pdftk\FdfFile;
-
+use kauffinger\pdftkmcpdf\FdfFile;
 class FdfFileTest extends TestCase
 {
     public function testFdfFileCreation()

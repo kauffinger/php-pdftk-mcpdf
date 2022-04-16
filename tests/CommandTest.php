@@ -2,7 +2,7 @@
 namespace tests;
 
 use PHPUnit\Framework\TestCase;
-use mikehaertl\pdftk\Command;
+use kauffinger\pdftkmcpdf\Command;
 
 class CommandTest extends TestCase
 {
@@ -14,8 +14,8 @@ class CommandTest extends TestCase
 
         $command = new Command;
         $this->assertEquals(0, $command->getFileCount());
-        $this->assertInstanceOf('mikehaertl\pdftk\Command', $command->addFile($document1, 'A'));
-        $this->assertInstanceOf('mikehaertl\pdftk\Command', $command->addFile($document2, 'B', 'complex\'"password'));
+        $this->assertInstanceOf('kauffinger\pdftkmcpdf\Command', $command->addFile($document1, 'A'));
+        $this->assertInstanceOf('kauffinger\pdftkmcpdf\Command', $command->addFile($document2, 'B', 'complex\'"password'));
         $this->assertEquals(2, $command->getFileCount());
         $this->assertTrue($command->execute($file));
         $this->assertFileExists($file);
@@ -29,10 +29,10 @@ class CommandTest extends TestCase
         $file = $this->getOutFile();
 
         $command = new Command;
-        $this->assertInstanceOf('mikehaertl\pdftk\Command', $command->addFile($document1, 'A'));
-        $this->assertInstanceOf('mikehaertl\pdftk\Command', $command->addOption('encrypt_40bit'));
-        $this->assertInstanceOf('mikehaertl\pdftk\Command', $command->addOption('allow', 'Printing', false));
-        $this->assertInstanceOf('mikehaertl\pdftk\Command', $command->addOption('owner_pw', 'complex\'"password'));
+        $this->assertInstanceOf('kauffinger\pdftkmcpdf\Command', $command->addFile($document1, 'A'));
+        $this->assertInstanceOf('kauffinger\pdftkmcpdf\Command', $command->addOption('encrypt_40bit'));
+        $this->assertInstanceOf('kauffinger\pdftkmcpdf\Command', $command->addOption('allow', 'Printing', false));
+        $this->assertInstanceOf('kauffinger\pdftkmcpdf\Command', $command->addOption('owner_pw', 'complex\'"password'));
         $this->assertTrue($command->execute($file));
         $this->assertFileExists($file);
 
@@ -45,9 +45,9 @@ class CommandTest extends TestCase
         $file = $this->getOutFile();
 
         $command = new Command;
-        $this->assertInstanceOf('mikehaertl\pdftk\Command', $command->addFile($document1, 'A'));
-        $this->assertInstanceOf('mikehaertl\pdftk\Command', $command->setOperation('cat'));
-        $this->assertInstanceOf('mikehaertl\pdftk\Command', $command->setOperationArgument('A'));
+        $this->assertInstanceOf('kauffinger\pdftkmcpdf\Command', $command->addFile($document1, 'A'));
+        $this->assertInstanceOf('kauffinger\pdftkmcpdf\Command', $command->setOperation('cat'));
+        $this->assertInstanceOf('kauffinger\pdftkmcpdf\Command', $command->setOperationArgument('A'));
         $this->assertTrue($command->execute($file));
         $this->assertFileExists($file);
 
@@ -62,21 +62,21 @@ class CommandTest extends TestCase
         $file = $this->getOutFile();
 
         $command = new Command;
-        $this->assertInstanceOf('mikehaertl\pdftk\Command', $command->addFile($document1, 'A'));
-        $this->assertInstanceOf('mikehaertl\pdftk\Command', $command->setOperation('cat'));
-        $this->assertInstanceOf('mikehaertl\pdftk\Command', $command->addPageRange(1));
-        $this->assertInstanceOf('mikehaertl\pdftk\Command', $command->addPageRange(1, null, 'A'));
-        $this->assertInstanceOf('mikehaertl\pdftk\Command', $command->addPageRange(1, 3));
-        $this->assertInstanceOf('mikehaertl\pdftk\Command', $command->addPageRange(1, 3, null, 'even'));
-        $this->assertInstanceOf('mikehaertl\pdftk\Command', $command->addPageRange(1, 3, null, 'even', 'north'));
-        $this->assertInstanceOf('mikehaertl\pdftk\Command', $command->addPageRange(1, 3, null, null, 'north'));
-        $this->assertInstanceOf('mikehaertl\pdftk\Command', $command->addPageRange(1, 3, 'A'));
-        $this->assertInstanceOf('mikehaertl\pdftk\Command', $command->addPageRange(1, 3, 'A', 'even'));
-        $this->assertInstanceOf('mikehaertl\pdftk\Command', $command->addPageRange(1, 3, 'A', 'odd', 'east'));
-        $this->assertInstanceOf('mikehaertl\pdftk\Command', $command->addPageRange(1, 3, 'A', null, 'east'));
-        $this->assertInstanceOf('mikehaertl\pdftk\Command', $command->addPageRange(1, 3, null, null, 'east'));
-        $this->assertInstanceOf('mikehaertl\pdftk\Command', $command->addPageRange(array(1,3)));
-        $this->assertInstanceOf('mikehaertl\pdftk\Command', $command->addPageRange(array(1,3), null, 'A'));
+        $this->assertInstanceOf('kauffinger\pdftkmcpdf\Command', $command->addFile($document1, 'A'));
+        $this->assertInstanceOf('kauffinger\pdftkmcpdf\Command', $command->setOperation('cat'));
+        $this->assertInstanceOf('kauffinger\pdftkmcpdf\Command', $command->addPageRange(1));
+        $this->assertInstanceOf('kauffinger\pdftkmcpdf\Command', $command->addPageRange(1, null, 'A'));
+        $this->assertInstanceOf('kauffinger\pdftkmcpdf\Command', $command->addPageRange(1, 3));
+        $this->assertInstanceOf('kauffinger\pdftkmcpdf\Command', $command->addPageRange(1, 3, null, 'even'));
+        $this->assertInstanceOf('kauffinger\pdftkmcpdf\Command', $command->addPageRange(1, 3, null, 'even', 'north'));
+        $this->assertInstanceOf('kauffinger\pdftkmcpdf\Command', $command->addPageRange(1, 3, null, null, 'north'));
+        $this->assertInstanceOf('kauffinger\pdftkmcpdf\Command', $command->addPageRange(1, 3, 'A'));
+        $this->assertInstanceOf('kauffinger\pdftkmcpdf\Command', $command->addPageRange(1, 3, 'A', 'even'));
+        $this->assertInstanceOf('kauffinger\pdftkmcpdf\Command', $command->addPageRange(1, 3, 'A', 'odd', 'east'));
+        $this->assertInstanceOf('kauffinger\pdftkmcpdf\Command', $command->addPageRange(1, 3, 'A', null, 'east'));
+        $this->assertInstanceOf('kauffinger\pdftkmcpdf\Command', $command->addPageRange(1, 3, null, null, 'east'));
+        $this->assertInstanceOf('kauffinger\pdftkmcpdf\Command', $command->addPageRange(array(1,3)));
+        $this->assertInstanceOf('kauffinger\pdftkmcpdf\Command', $command->addPageRange(array(1,3), null, 'A'));
         $this->assertTrue($command->execute($file));
         $this->assertFileExists($file);
 

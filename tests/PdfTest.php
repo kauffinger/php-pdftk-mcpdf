@@ -2,7 +2,7 @@
 namespace tests;
 
 use PHPUnit\Framework\TestCase;
-use mikehaertl\pdftk\Pdf;
+use kauffinger\pdftkmcpdf\Pdf;
 
 class PdfTest extends TestCase
 {

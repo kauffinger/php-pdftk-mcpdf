@@ -2,7 +2,7 @@
 namespace tests;
 
 use PHPUnit\Framework\TestCase;
-use mikehaertl\pdftk\DataFields;
+use kauffinger\pdftkmcpdf\DataFields;
 
 class DataFieldsTest extends TestCase
 {

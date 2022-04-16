@@ -2,7 +2,7 @@
 namespace tests;
 
 use PHPUnit\Framework\TestCase;
-use mikehaertl\pdftk\XfdfFile;
+use kauffinger\pdftkmcpdf\XfdfFile;
 
 class XfdfFileTest extends TestCase
 {

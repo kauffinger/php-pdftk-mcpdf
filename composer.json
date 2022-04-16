@@ -1,13 +1,13 @@
 {
-    "name": "mikehaertl/php-pdftk",
-    "description": "A PDF conversion and form utility based on pdftk.",
+    "name": "kauffinger/php-pdftk-mcpdf",
+    "description": "A PDF conversion and form utility based on mikehaertl/pdftk and vigicorp/php-mcpdf. Dynamically usable with mcpdf.",
     "keywords": ["pdf", "pdftk"],
     "type": "library",
     "license": "MIT",
     "authors": [
         {
-            "name": "Michael Haertl",
-            "email": "haertl.mike@gmail.com"
+            "name": "Konstantin Auffinger",
+            "email": "konstantinauffinger@gmail.com"
         }
     ],
     "require": {
@@ -20,7 +20,7 @@
     },
     "autoload": {
         "psr-4": {
-            "mikehaertl\\pdftk\\": "src/"
+            "kauffinger\\pdftkmcpdf\\": "src/"
         }
     },
     "autoload-dev": {
